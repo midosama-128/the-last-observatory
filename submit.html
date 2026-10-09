@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE LAST OBSERVATORY // SIGNAL TERMINAL</title>
+<style>
+:root{--bg:#070a12;--panel:#0c1220;--line:#28344a;--text:#dce5f2;--muted:#8391a8;--cyan:#9eeaf0;--violet:#b7a8ff;--gold:#d9c58d;--danger:#d98d9a}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--text);background:radial-gradient(ellipse at 50% 0%,#182039 0%,#0a0e19 45%,var(--bg) 80%);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;display:flex;align-items:center;justify-content:center;padding:28px 16px}
+.stars{position:fixed;inset:0;pointer-events:none;opacity:.6;background-image:radial-gradient(1px 1px at 8% 19%,#d6eaff 98%,transparent),radial-gradient(1px 1px at 76% 13%,#d6eaff 98%,transparent),radial-gradient(1px 1px at 88% 68%,#d6eaff 98%,transparent),radial-gradient(1px 1px at 21% 78%,#d6eaff 98%,transparent),radial-gradient(1px 1px at 42% 36%,#d6eaff 98%,transparent),radial-gradient(1px 1px at 63% 84%,#d6eaff 98%,transparent)}
+main{position:relative;width:min(680px,100%);border:1px solid var(--line);background:#090e19ed;box-shadow:0 24px 90px #0008;border-radius:12px;overflow:hidden}.topline{height:3px;background:linear-gradient(90deg,transparent,var(--cyan),var(--violet),transparent)}.inner{padding:clamp(24px,6vw,48px)}
+.eyebrow{font-size:11px;letter-spacing:.22em;color:var(--cyan);text-transform:uppercase}h1{font-size:clamp(24px,5vw,38px);font-weight:500;letter-spacing:.06em;line-height:1.25;margin:17px 0 8px}.subtitle{font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.rule{height:1px;background:var(--line);margin:28px 0}.status{display:flex;align-items:center;gap:10px;color:var(--gold);font-size:11px;letter-spacing:.12em}.dot{width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 12px #d9c58d80}
+p{line-height:1.8;font-size:14px;color:#c3cede}.prompt{border-left:2px solid var(--violet);padding:4px 0 4px 16px;margin:24px 0;color:#e2e7f4;line-height:1.9;font-size:14px}
+label{display:block;color:var(--muted);font-size:11px;letter-spacing:.12em;margin-bottom:10px;text-transform:uppercase}form{display:flex;gap:9px}input{min-width:0;flex:1;background:#060a12;border:1px solid #344158;border-radius:6px;padding:14px 15px;color:var(--cyan);font:inherit;letter-spacing:.13em;text-transform:uppercase;outline:none}input:focus{border-color:var(--cyan);box-shadow:0 0 0 2px #9eeaf01c}
+button{border:1px solid #7d8aa7;background:#192238;color:#edf3ff;border-radius:6px;padding:0 18px;font:inherit;font-size:12px;letter-spacing:.08em;cursor:pointer}button:hover{background:#24314d;border-color:var(--cyan)}button:disabled{opacity:.7;cursor:default}
+.feedback{min-height:24px;margin-top:12px;font-size:12px;color:var(--danger)}.success{display:none;margin-top:26px;border:1px solid #46516d;border-radius:8px;background:#0d1423;padding:22px}.success.show{display:block;animation:appear .8s ease both}.success .tag{font-size:10px;letter-spacing:.18em;color:var(--cyan)}.success h2{font-weight:500;font-size:18px;letter-spacing:.08em;margin:14px 0}.success p{white-space:pre-line}.link{display:inline-block;margin-top:12px;color:var(--cyan);font-size:12px;text-decoration:none;border-bottom:1px solid #9eeaf066;padding-bottom:4px}.link:hover{border-color:var(--cyan)}
+.footer{border-top:1px solid var(--line);padding:14px 24px;display:flex;justify-content:space-between;gap:12px;color:#66758d;font-size:10px;letter-spacing:.08em}@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@media(max-width:520px){form{flex-direction:column}button{padding:13px}.footer{flex-direction:column}}
+</style></head><body><div class="stars"></div><main><div class="topline"></div><div class="inner">
+<div class="eyebrow">THE LAST OBSERVATORY / REMOTE TERMINAL 03</div><h1>INCOMING SIGNAL</h1><div class="subtitle">RECOVERED TRANSMISSION // ACCESS RESTRICTED</div><div class="rule"></div>
+<div class="status"><span class="dot"></span> WAITING FOR A VALID OBSERVATION</div><p>A fragment of the final transmission has been recovered.</p>
+<div class="prompt">The order matters.<br>Do not rearrange the record.<br>Read what remains.</div>
+<form id="answer-form" autocomplete="off"><div style="flex:1;min-width:0"><label for="answer">Transmission key</label><input id="answer" name="answer" type="text" placeholder="ENTER KEYWORD" spellcheck="false" aria-label="Transmission key"></div><button type="submit">TRANSMIT</button></form><div id="feedback" class="feedback" aria-live="polite"></div>
+<section id="success" class="success" aria-live="polite"><div class="tag">SIGNAL RESTORED // 00:00:00</div><h2>INCOMING TRANSMISSION</h2>
+<p>You have read the record.
+You have preserved its order.
+You have recovered the signal.
+
+But your name does not appear in the archive.
+
+The observatory has recorded zero observers
+since the moment you arrived.
+
+Then who has been reading this?
+
+The observer was never part of the record.
+
+The observer is the one reading it.</p><div class="rule"></div><p style="color:var(--cyan);margin-bottom:0">The final signal has not arrived.</p>
+<a class="link" href="https://midosama-128.github.io/the-last-observatory/" target="_blank" rel="noopener">RETURN TO THE LAST OBSERVATORY ↗</a></section></div>
+<div class="footer"><span>OBSERVATORY ARCHIVE SYSTEM</span><span>OBSERVER COUNT: 0</span></div></main>
+<script>
+const form=document.getElementById('answer-form'),input=document.getElementById('answer'),feedback=document.getElementById('feedback'),success=document.getElementById('success');
+form.addEventListener('submit',event=>{event.preventDefault();const answer=input.value.trim().replace(/\s+/g,'').toUpperCase();if(answer==='LOOKAWAY'){feedback.textContent='';success.classList.add('show');input.disabled=true;form.querySelector('button').disabled=true;form.querySelector('button').textContent='SIGNAL RESTORED';}else{feedback.textContent='SIGNAL REJECTED. THE RECORD REMAINS INCOMPLETE.';success.classList.remove('show');}});
+</script></body></html>
