@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b13">
+<meta name="description" content="오래된 관측 기록을 따라 신호를 해독하고 별빛의 흔적을 찾아보세요.">
+<title>THE LAST OBSERVATORY</title>
+<style>
+:root{--bg:#080b13;--panel:#101725;--panel2:#0c1220;--line:#27344a;--ink:#e7edf7;--muted:#8d9bb1;--violet:#b9a7ff;--cyan:#a4e7ed;--gold:#f0d8a0;--red:#e5a9b1}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#1b2340 0%,var(--bg) 55%);color:var(--ink);font:16px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-height:100vh;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.28;background-image:radial-gradient(1px 1px at 11% 19%,#fff 99%,transparent),radial-gradient(1px 1px at 73% 12%,#fff 99%,transparent),radial-gradient(1px 1px at 43% 38%,#cbd7ff 99%,transparent),radial-gradient(1px 1px at 91% 63%,#fff 99%,transparent),radial-gradient(1px 1px at 19% 77%,#fff 99%,transparent),radial-gradient(1px 1px at 61% 88%,#fff 99%,transparent);background-size:330px 290px,410px 350px,500px 390px,370px 310px,450px 410px,520px 470px;z-index:-1}button,input{font:inherit}button{cursor:pointer}a{color:var(--cyan)}.shell{width:min(920px,calc(100% - 32px));margin:0 auto;padding:26px 0 60px}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;border-bottom:1px solid var(--line);padding:0 0 16px;margin-bottom:30px;color:var(--muted);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase}.brand{display:flex;gap:10px;align-items:center}.brandmark{color:var(--violet);font-size:1.25rem}.status{display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:50%;background:#8ed9b6;box-shadow:0 0 10px #8ed9b688}.hero{padding:clamp(24px,6vw,58px) 0 30px}.eyebrow{color:var(--violet);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase}.hero h1{font:500 clamp(2.3rem,7vw,5.1rem)/.98 Georgia,'Times New Roman',serif;letter-spacing:-.045em;margin:16px 0 18px;max-width:760px}.hero h1 span{color:var(--violet);font-style:italic}.lede{max-width:610px;color:#aab6c9;font-family:Georgia,serif;font-size:1.18rem;line-height:1.65}.grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,.8fr);gap:16px;align-items:start}.panel{background:linear-gradient(150deg,#111a2aee,#0b111eee);border:1px solid var(--line);border-radius:14px;padding:clamp(18px,4vw,28px);box-shadow:0 16px 50px #0002}.panel h2{font:500 1.55rem/1.2 Georgia,serif;margin:0 0 12px}.panel p{color:#aab6c9}.sectionlabel{font-size:.72rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:13px}.formula{font-size:clamp(1.1rem,3vw,1.55rem);color:var(--violet);letter-spacing:.04em;padding:17px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:18px 0}.mono{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--cyan);background:#080d17;border:1px solid #202c40;border-radius:8px;padding:14px;font-size:.9rem;line-height:1.8}.fieldrow{display:flex;gap:8px;margin-top:18px}.fieldrow input{min-width:0;flex:1;background:#080d17;border:1px solid #34415a;border-radius:8px;padding:12px 13px;color:var(--ink);outline:none}.fieldrow input:focus{border-color:var(--violet);box-shadow:0 0 0 3px #b9a7ff18}.btn{border:1px solid #7165a9;background:#b9a7ff;color:#141126;padding:11px 16px;border-radius:8px;font-weight:700;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn.secondary{background:#131d2e;color:var(--ink);border-color:#394761}.feedback{min-height:25px;color:var(--gold);font-size:.85rem;margin-top:10px}.small{font-size:.82rem;color:var(--muted)}.sidepanel{display:flex;flex-direction:column;gap:14px}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #202b3e;padding:9px 0;color:var(--muted);font-size:.85rem}.metric:last-child{border-bottom:0}.metric strong{color:var(--ink);font-weight:500}.progress{height:3px;background:#202b3e;border-radius:10px;overflow:hidden;margin:18px 0 8px}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--cyan));transition:width .5s}.stage{display:none}.stage.active{display:block;animation:appear .45s ease both}.stagehead{display:flex;justify-content:space-between;gap:14px;align-items:start;margin-bottom:22px}.stageindex{color:var(--violet);font-size:.75rem;letter-spacing:.14em}.stage h2{font:500 clamp(1.8rem,5vw,2.8rem)/1.1 Georgia,serif;margin:8px 0 10px}.hint{border-left:2px solid #655a96;padding:7px 0 7px 13px;color:#b8b2d7;font-size:.88rem;margin:18px 0}.wordlist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0}.wordchip{border:1px solid #29364b;border-radius:7px;padding:9px 10px;background:#0b111d;color:#d4ddec;font-size:.85rem}.wordchip b{color:var(--gold);margin-right:7px}.hiddenstar{position:fixed;right:17px;bottom:16px;border:1px solid #35415a;background:#0c1220dd;color:#a7b5cb;border-radius:50%;width:43px;height:43px;font-size:1.25rem;z-index:5;transition:all .3s}.hiddenstar:hover,.hiddenstar.found{color:var(--gold);border-color:var(--gold);box-shadow:0 0 24px #f0d8a033}.archive-note{display:none;border:1px dashed #655a96;background:#121329;padding:17px;border-radius:9px;margin-top:16px}.archive-note.show{display:block;animation:appear .5s ease}.ending{position:relative;min-height:430px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:35px 20px}.ending h2{font:italic 500 clamp(2rem,6vw,4rem)/1.1 Georgia,serif;max-width:600px}.ending p{max-width:490px;color:#aab6c9;font-family:Georgia,serif;font-size:1.1rem}.sky{position:absolute;inset:0;pointer-events:none;transition:opacity 4s ease}.sky span{position:absolute;width:3px;height:3px;border-radius:50%;background:#e4e8ff;box-shadow:0 0 9px #c3cfff;animation:twinkle 3s ease-in-out infinite alternate}.ending.fading .sky{opacity:0}.ending.fading .endcopy{animation:dim 6s ease forwards}.endcopy{position:relative;z-index:1}.transmission{max-width:680px;margin:0 auto}.transmission h2{font-size:clamp(2rem,6vw,3.6rem)}.story-lines{min-height:190px;display:flex;flex-direction:column;justify-content:center;gap:15px;margin:24px auto;max-width:590px}.story-line{opacity:0;transform:translateY(8px);transition:opacity 1.6s ease,transform 1.6s ease;color:#c4cede;font:clamp(1rem,2.4vw,1.2rem)/1.9 Georgia,serif}.story-line.visible{opacity:1;transform:translateY(0)}.story-line.final-line{color:var(--gold);font-style:italic}.story-line.final-line:last-child{text-align:center}.music-frame{width:min(100%,560px);margin:22px auto 0;border:1px solid #29364b;border-radius:10px;overflow:hidden;background:#080d17;aspect-ratio:16/9}.music-frame iframe{display:block;width:100%;height:100%;border:0}.music-frame{aspect-ratio:auto;min-height:44px;padding:10px 12px;display:flex;align-items:center;justify-content:center}.music-frame a{color:#c4cede;text-decoration:none;font-size:.75rem;letter-spacing:.05em}.music-frame a:hover{color:var(--gold)}.transmission-state{color:var(--muted);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;margin-top:18px}.transmission-state:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--cyan);margin:0 9px 1px 0;box-shadow:0 0 10px #a4e7ed88}
+/* Korean epilogue: restrained, line-by-line and character-by-character reveal */
+.transmission{padding-bottom:68px}.transmission .endcopy{width:100%;max-width:720px}.transmission h2{font-family:Georgia,'Noto Serif KR',serif;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.35}.story-lines{min-height:190px;max-width:640px;gap:18px;margin:30px auto;text-align:left}.story-line{font-family:Georgia,'Noto Serif KR','Batang',serif;font-size:clamp(1rem,2.5vw,1.16rem);line-height:2;color:#c4cede;opacity:0;transform:translateY(7px);transition:opacity 1.3s ease,transform 1.3s ease;overflow-wrap:keep-all}.story-line.visible{opacity:1;transform:translateY(0)}.story-char{opacity:0;filter:blur(3px);transition:opacity .28s ease,filter .35s ease}.story-line.visible .story-char{opacity:1;filter:blur(0)}.story-line.final-line{color:var(--gold);text-align:center}.music-frame{position:fixed;right:18px;bottom:58px;width:180px;aspect-ratio:16/9;margin:0;z-index:8;opacity:.72;box-shadow:0 8px 30px #0008}.music-frame:hover{opacity:1}.transmission-state{margin-top:26px}.travelers-link{position:fixed;right:18px;bottom:18px;z-index:9;color:#8190a8;text-decoration:none;font-size:.68rem;letter-spacing:.16em;opacity:.58;transition:opacity .4s,color .4s}.travelers-link:hover{opacity:1;color:var(--gold)}.ending.fading .sky{opacity:0}.ending.fading .endcopy{animation:dim 6s ease forwards}@media(max-width:520px){.music-frame{width:132px;right:10px;bottom:48px}.travelers-link{right:12px;bottom:12px}.story-lines{gap:14px}}
+.end-start{margin-top:20px}.footer{border-top:1px solid var(--line);margin-top:28px;padding-top:16px;display:flex;justify-content:space-between;gap:16px;color:#66758b;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}.hidden{display:none!important}.notice{color:#8796ad;font-size:.8rem;margin-top:18px}@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}@keyframes twinkle{from{opacity:.35;transform:scale(.8)}to{opacity:1;transform:scale(1.25)}}@keyframes dim{0%{opacity:1}65%{opacity:.5}100%{opacity:.82}}
+/* Quantum observation cipher */
+.wave-record{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.wavefield{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:16px 0}
+.wave-fragment{min-height:72px;display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid #2c3850;border-radius:8px;background:radial-gradient(circle at 50% 0%,#202440,#0a101c 75%);color:var(--cyan);user-select:none;cursor:crosshair;transition:border-color .2s,background .2s}
+.wave-fragment:hover,.wave-fragment:focus-visible,.wave-fragment.observed{border-color:#b9a7ff;background:#15172a;outline:none}
+.wave-fragment .index{align-self:flex-start;margin-top:8px;font-size:.68rem;color:var(--gold);opacity:.8}
+.wave-fragment .glyph{font:italic 1.7rem Georgia,serif;transition:opacity .16s,filter .16s;text-shadow:0 0 14px #a4e7ed55}
+.wave-fragment:hover .glyph,.wave-fragment:focus-visible .glyph,.wave-fragment.observed .glyph{opacity:0;filter:blur(5px)}
+.wave-result{display:none;margin-top:13px;padding:14px;border:1px dashed #655a96;border-radius:8px;background:#121329;color:#d9d3ff}
+.wave-result.show{display:block;animation:appear .5s ease}
+@media(max-width:420px){.wavefield{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media(max-width:720px){.grid{grid-template-columns:1fr}.sidepanel{display:grid;grid-template-columns:1fr 1fr}.sidepanel .panel{padding:16px}.wordlist{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{font-size:.65rem}.hero{padding-top:28px}.fieldrow{flex-wrap:wrap}.fieldrow input{flex-basis:100%}.footer{flex-direction:column}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* Final-page typography adjustment */
+#ending-panel .endcopy h2{
+  font-size:clamp(1.45rem,4.2vw,2.7rem);
+  line-height:1.35;
+  text-align:left;
+  max-width:100%;
+  overflow-wrap:normal;
+  word-break:keep-all;
+}
+#ending-panel .story-line.final-line{
+  text-align:left;
+}
+
+
+/* Observer puzzle: the field starts completely absent, appears on click, and vanishes on the next click */
+.wavefield-unrevealed{display:none}
+.wavefield-revealed{display:grid}
+.wavefield-unrevealed .wave-fragment .glyph{opacity:0;filter:blur(5px)}
+.wavefield-unrevealed .wave-fragment:hover .glyph,
+.wavefield-unrevealed .wave-fragment:focus-visible .glyph,
+.wavefield-unrevealed .wave-fragment.observed .glyph{opacity:0;filter:blur(5px)}
+.wavefield-revealed .wave-fragment .glyph{opacity:1;filter:blur(0)}
+.wavefield-revealed .wave-fragment:hover .glyph,
+.wavefield-revealed .wave-fragment:focus-visible .glyph,
+.wavefield-revealed .wave-fragment.observed .glyph{opacity:0;filter:blur(5px)}
+.wave-reveal-toggle{margin:10px 0 0}
+
+
+/* Explicit pointer observation: letters disappear while the pointer is over a fragment */
+.wavefield-revealed .wave-fragment.pointer-observed .glyph{
+  opacity:0 !important;
+  filter:blur(5px) !important;
+}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar"><div class="brand"><span class="brandmark">✳</span><span>Deep-Sky Archive / Observatory 07</span></div><div class="status"><span class="dot"></span><span id="signal-status">Signal detected</span></div></header>
+<main>
+<section id="intro" class="stage active">
+  <div class="hero"><div class="eyebrow">Recovered observation log · 07/Δ</div><h1>THE LAST <span>OBSERVATORY</span></h1><p class="lede">A signal was recorded long after its source should have gone dark. The archive is incomplete. Its observer left no name, only a sequence of notes.</p></div>
+  <div class="grid"><article class="panel"><div class="sectionlabel">Record 00 / Entry point</div><h2>What remains when a signal outlives its source?</h2><p>The first page contains a familiar relation, followed by a string of numbers. Nothing here appears to be addressed to you.</p><div class="formula">Δx Δp ≥ ℏ / 2</div><div class="mono">20 08 05 / 15 02 19 05 18 22 05 18</div><p class="small">A marginal note: “The alphabet is a measuring instrument, too.”</p><div class="fieldrow"><input id="answer1" autocomplete="off" spellcheck="false" placeholder="Enter the decoded word" aria-label="Decoded word"><button class="btn" data-check="1">Decode</button></div><div id="feedback1" class="feedback" aria-live="polite"></div></article>
+  <aside class="sidepanel"><div class="panel"><div class="sectionlabel">System status</div><div class="metric"><span>Observer</span><strong>Unknown</strong></div><div class="metric"><span>Signal age</span><strong>Undetermined</strong></div><div class="metric"><span>Location</span><strong>Unresolved</strong></div><div class="progress"><span id="progressbar"></span></div><div class="small" id="progress-label">0 / 4 records recovered</div></div><div class="panel"><div class="sectionlabel">Field note</div><p style="font-family:Georgia,serif;margin:0">“The first letter matters. Does the order make it shine?”</p><p class="small">— unsigned, found beneath the lens</p></div></aside></div>
+</section>
+<section id="stage2" class="stage"><div class="hero"><div class="eyebrow">Record 01 / Measurement</div><h1>The <span>Observer</span></h1><p class="lede">The first word opened a second record. This one was stored as eight-bit groups, as if the archive expected someone to know how a machine reads light.</p></div><div class="grid"><article class="panel"><div class="sectionlabel">Recovered transmission</div><h2>Not every signal is written in letters.</h2><p>Each group contains eight binary digits. Convert each group to an ASCII character. Read the result as one word.</p><div class="mono">01001100 01001001 01000111 01001000 01010100</div><div class="hint">A photon is not a message. It is the messenger.</div><div class="fieldrow"><input id="answer2" autocomplete="off" spellcheck="false" placeholder="Decoded word" aria-label="Binary decoded word"><button class="btn" data-check="2">Decode</button></div><div id="feedback2" class="feedback" aria-live="polite"></div><div id="hidden-note" class="archive-note"><div class="sectionlabel">Unindexed note / recovered</div><p>Some stars are already gone when their light reaches us.</p><p class="small">The observation is not the source. Keep this distinction.</p></div>
+<div class="wave-record"><div class="sectionlabel">Supplement / Wavefunction 02</div><h2>The observer is in the way.</h2><p>Each fragment vanishes beneath your cursor. Move away to see it again. The numbers are stable; the observation is not. Read the letters in numerical order.</p><button class="btn wave-reveal-toggle" id="wave-reveal-toggle" type="button" aria-expanded="false">Observe fragments</button><div class="wavefield wavefield-unrevealed" id="wavefield" aria-label="Hover over each fragment to make its letter disappear"><div class="wave-fragment" tabindex="0" data-number="5" aria-label="Fragment 5"><span class="index">05</span><span class="glyph">A</span></div><div class="wave-fragment" tabindex="0" data-number="2" aria-label="Fragment 2"><span class="index">02</span><span class="glyph">O</span></div><div class="wave-fragment" tabindex="0" data-number="8" aria-label="Fragment 8"><span class="index">08</span><span class="glyph">Y</span></div><div class="wave-fragment" tabindex="0" data-number="1" aria-label="Fragment 1"><span class="index">01</span><span class="glyph">L</span></div><div class="wave-fragment" tabindex="0" data-number="7" aria-label="Fragment 7"><span class="index">07</span><span class="glyph">A</span></div><div class="wave-fragment" tabindex="0" data-number="3" aria-label="Fragment 3"><span class="index">03</span><span class="glyph">O</span></div><div class="wave-fragment" tabindex="0" data-number="6" aria-label="Fragment 6"><span class="index">06</span><span class="glyph">W</span></div><div class="wave-fragment" tabindex="0" data-number="4" aria-label="Fragment 4"><span class="index">04</span><span class="glyph">K</span></div></div><div class="fieldrow"><input id="wave-answer" autocomplete="off" spellcheck="false" placeholder="Eight-letter instruction" aria-label="Wavefunction cipher answer"><button class="btn secondary" id="wave-check">Observe</button></div><div id="wave-feedback" class="feedback" aria-live="polite"></div><div id="wave-result" class="wave-result"><div class="sectionlabel">Measurement result</div><p>The message was here the whole time. Your attention was the eclipse.</p><p class="small">A record can disappear from view without ceasing to exist.</p></div></div></article><aside class="sidepanel"><div class="panel"><div class="sectionlabel">Translation table</div><div class="metric"><span>Binary</span><strong>Base 2</strong></div><div class="metric"><span>Groups</span><strong>8 bits</strong></div><div class="metric"><span>Alphabet</span><strong>ASCII</strong></div><p class="small">A hidden star near the edge of the screen may reveal an unindexed note.</p></div></aside></div></section>
+<section id="stage3" class="stage"><div class="hero"><div class="eyebrow">Record 02 / Ordering</div><h1>Make it <span>shine</span></h1><p class="lede">The archive lists five observations out of order. A handwritten instruction is preserved beneath them.</p></div><div class="grid"><article class="panel"><div class="sectionlabel">Loose fragments</div><h2>The first letter matters.</h2><p>Does the order make it shine? Sort the records by their number, then read the first letter of each word.</p><div class="wordlist"><div class="wordchip"><b>5</b> Ember</div><div class="wordchip"><b>2</b> Return</div><div class="wordchip"><b>8</b> Remember</div><div class="wordchip"><b>1</b> Trace</div><div class="wordchip"><b>7</b> Echo</div><div class="wordchip"><b>3</b> Astral</div><div class="wordchip"><b>9</b> Silence</div><div class="wordchip"><b>4</b> Voyager</div><div class="wordchip"><b>6</b> Light</div></div><div class="hint">The order is not the order in which they were found.</div><div class="fieldrow"><input id="answer3" autocomplete="off" spellcheck="false" placeholder="Nine letters" aria-label="Ordered word"><button class="btn" data-check="3">Restore</button></div><div id="feedback3" class="feedback" aria-live="polite"></div></article><aside class="sidepanel"><div class="panel"><div class="sectionlabel">Recovered annotation</div><p style="font-family:Georgia,serif">“The source may fade. Its trace can still arrive.”</p><p class="small">No timestamp survived.</p></div></aside></div></section>
+<section id="stage4" class="stage"><div class="hero"><div class="eyebrow">Record 03 / Final signal</div><h1>One last <span>frequency</span></h1><p class="lede">The final record contains a reversed identifier. The archive gives no title, only an instruction.</p></div><div class="grid"><article class="panel"><div class="sectionlabel">Terminal fragment</div><h2>Read the trace backwards.</h2><div class="mono">kGRqCKne43z</div><p>Reverse the string to recover the signal identifier. It belongs at the end of a familiar video address.</p><div class="fieldrow"><input id="answer4" autocomplete="off" spellcheck="false" placeholder="Recovered identifier" aria-label="Recovered identifier"><button class="btn" data-check="4">Transmit</button></div><div id="feedback4" class="feedback" aria-live="polite"></div><p class="notice">A hidden note may change the way the final record is understood.</p></article><aside class="sidepanel"><div class="panel"><div class="sectionlabel">Final note</div><p style="font-family:Georgia,serif">No signal can tell you whether its source is still there.</p><p class="small">Only that its light once was.</p></div></aside></div></section>
+<section id="ending" class="stage"><div class="panel ending transmission" id="ending-panel"><div class="sky" id="sky"></div><div class="endcopy"><div class="eyebrow">마지막 기록 / 다음 관측자에게</div><h2>무릇 당신이 날 보고 있다면.</h2><p class="small">관측은 끝나지 않았습니다. 기록만이 잠시 멈췄을 뿐입니다.</p><button id="begin-transmission" class="btn end-start">신호 재생</button><div id="story-lines" class="story-lines" aria-live="polite">
+<p class="story-line">당신이 날 얼마나 보기 시작한 지,</p>
+<p class="story-line">시간이 얼마나 지났는지는 이제 중요하지 않겠죠.</p>
+<p class="story-line">어쩌면, 처음부터 그다지 중요한 일은 아니었을지도 모르겠습니다.</p>
+<p class="story-line">별들은...늘 그랬듯이. 여전히 비슷한 곳에 보이겠죠.</p>
+<p class="story-line">적어도, 당신이 있는 그곳에선 말이에요.</p>
+<p class="story-line">그럼에도 알고 있죠, 별은 머물지는 않는다고요.</p>
+<p class="story-line">우리가 보는 빛은 언제나 지금의 빛이 아니에요.</p>
+<p class="story-line">어떤 별은 아주 오래전에 빛을 떠나보냈고,</p>
+<p class="story-line">그 빛이 이곳에 도착했을 무렵에는 이미 사라졌을지도 모릅니다.</p>
+<p class="story-line">그렇다면 지금 우리가 바라보는 별들은 어디에 있는 걸까요.</p>
+<p class="story-line">여전히 그 자리에 있을까요,</p>
+<p class="story-line">아니면 오래전부터 아무도 모르는 곳으로 떠나 버렸을까요.</p>
+<p class="story-line">글쎄요. 관측할 수 없는 것을 두고 확신하는 건 조금 이상한 일이겠죠.</p>
+<p class="story-line">다만 한 가지는 알 것 같습니다.</p>
+<p class="story-line">별이 사라졌다고 해서,</p>
+<p class="story-line">이미 떠나온 빛까지 사라지는 것은 아니라는 사실입니다.</p>
+<p class="story-line">빛은 한동안 어둠을 가로지르겠죠.</p>
+<p class="story-line">어디로 향하는지도 모른 채,</p>
+<p class="story-line">언젠가 무언가에 닿을 수 있으리라는 보장도 없이요.</p>
+<p class="story-line">어쩌면 우리가 남기는 기록도 비슷한 것이겠죠.</p>
+<p class="story-line">누군가 읽으리라는 확신은 없지만,</p>
+<p class="story-line">그렇다고 해서 남기지 않을 이유도 없는 것처럼요.</p>
+<p class="story-line">이 기록이 언젠가 발견된다면,</p>
+<p class="story-line">그때는 이곳의 별들이 어떤 모습이었는지 알 수 있을까요.</p>
+<p class="story-line">아니면 이 글만 남은 채,</p>
+<p class="story-line">모든 것이 이미 오래전에 지나가 버렸을까요.</p>
+<p class="story-line final-line">아마도, 그건 그때의...</p>
+<p class="story-line final-line">'당신' 같은 관측자만이 알 수 있겠죠.</p>
+</div><audio id="travelers-audio" preload="auto" src="travelers.mp3"></audio><p id="transmission-state" class="transmission-state hidden">글은 여기서 끝납니다 · 신호는 계속됩니다</p><a id="travelers-link" class="travelers-link hidden" href="https://youtu.be/z34enKCqRGk?si=zHYflT1AL4hU362X" target="_blank" rel="noopener noreferrer">TRAVELERS ↗</a></div></div></section>
+</main>
+<footer class="footer"><span>심우주 기록 보관소 · 관측소 07</span><span>그 근원보다 오래 살아남은 기록을 위하여</span></footer>
+</div>
+<button class="hiddenstar" id="secret-star" aria-label="Inspect unindexed star" title="Inspect unindexed star">✦</button>
+<script>
+(()=>{
+ const TARGET='https://youtu.be/z34enKCqRGk?si=zHYflT1AL4hU362X';
+ const VIDEO_ID='z34enKCqRGk';
+ const answers={1:'OBSERVER',2:'LIGHT',3:'TRAVELERS',4:'z34enKCqRGk'};
+ const stageIds=['intro','stage2','stage3','stage4','ending']; let recovered=0,secretFound=false;
+ const normalize=s=>(s||'').trim().replace(/\s+/g,'').toUpperCase();
+ function showStage(n){stageIds.forEach((id,i)=>document.getElementById(id).classList.toggle('active',i===n));window.scrollTo({top:0,behavior:'smooth'});}
+ function updateProgress(){document.getElementById('progressbar').style.width=(recovered/4*100)+'%';document.getElementById('progress-label').textContent=recovered+' / 4 records recovered';document.getElementById('signal-status').textContent=recovered===4?'Signal complete':'Signal detected';}
+ function check(n){const input=document.getElementById('answer'+n),fb=document.getElementById('feedback'+n);let value=input.value.trim();let ok=n===4?value.toLowerCase()===answers[n].toLowerCase():normalize(value)===answers[n];if(!ok){fb.textContent=['','Not quite. Try A=1, B=2 … Z=26.','Not quite. Read each 8-bit group as ASCII.','Take first letters in numerical order.','Not quite. Reverse every character in the fragment.'][n];return;}fb.textContent='Record verified. Loading next observation…';if(n===1)recovered=Math.max(recovered,1);if(n===2)recovered=Math.max(recovered,2);if(n===3)recovered=Math.max(recovered,3);if(n===4)recovered=Math.max(recovered,4);updateProgress();setTimeout(()=>{showStage(n===4?4:n);if(n===4)prepareEnding();},450);}
+ document.querySelectorAll('[data-check]').forEach(b=>b.addEventListener('click',()=>check(Number(b.dataset.check))));
+ [1,2,3,4].forEach(n=>document.getElementById('answer'+n).addEventListener('keydown',e=>{if(e.key==='Enter')check(n)}));
+
+ const waveRevealToggle=document.getElementById('wave-reveal-toggle');
+ const wavefield=document.getElementById('wavefield');
+ waveRevealToggle.addEventListener('click',()=>{
+   const revealed=wavefield.classList.contains('wavefield-revealed');
+   wavefield.classList.toggle('wavefield-revealed',!revealed);
+   wavefield.classList.toggle('wavefield-unrevealed',revealed);
+   waveRevealToggle.textContent=revealed?'Observe fragments':'Withdraw observation';
+   waveRevealToggle.setAttribute('aria-expanded',String(!revealed));
+   document.querySelectorAll('.wave-fragment').forEach(fragment=>fragment.classList.remove('observed'));
+ });
+ 
+ document.querySelectorAll('.wave-fragment').forEach(fragment=>{
+   fragment.addEventListener('pointerenter',()=>{
+     if(wavefield.classList.contains('wavefield-revealed')) fragment.classList.add('pointer-observed');
+   });
+   fragment.addEventListener('pointerleave',()=>fragment.classList.remove('pointer-observed'));
+ });
+ const waveAnswer=document.getElementById('wave-answer');
+ document.getElementById('wave-check').addEventListener('click',()=>{const fb=document.getElementById('wave-feedback');if(normalize(waveAnswer.value)!=='LOOKAWAY'){fb.textContent='Sort the fragments by number, then read each letter.';return;}fb.textContent='Pattern resolved. Observation withdrawn.';document.getElementById('wave-result').classList.add('show');});
+ waveAnswer.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('wave-check').click()});
+ document.querySelectorAll('.wave-fragment').forEach(fragment=>{fragment.addEventListener('click',()=>{if(matchMedia('(hover: none)').matches)fragment.classList.toggle('observed')});fragment.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&matchMedia('(hover: none)').matches){e.preventDefault();fragment.classList.toggle('observed')}})});
+ const star=document.getElementById('secret-star');star.addEventListener('click',()=>{if(secretFound){document.getElementById('hidden-note').classList.toggle('show');return;}secretFound=true;star.classList.add('found');star.textContent='✧';document.getElementById('hidden-note').classList.add('show');star.title='Unindexed note recovered';star.setAttribute('aria-label','Toggle recovered note');});
+ function prepareEnding(){const sky=document.getElementById('sky');if(!sky.dataset.built){for(let i=0;i<85;i++){const s=document.createElement('span');s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*100)+'%';s.style.animationDelay=(Math.random()*4)+'s';s.style.opacity=(.3+Math.random()*.7).toString();sky.appendChild(s);}sky.dataset.built='1';}}
+ async function beginTransmission(){
+   const button=document.getElementById('begin-transmission');
+   const audio=document.getElementById('travelers-audio');
+   button.disabled=true;button.textContent='신호 연결 중…';
+   try {
+     audio.volume=0.65;
+     await audio.play();
+     button.classList.add('hidden');
+     document.getElementById('transmission-state').classList.remove('hidden');
+     document.getElementById('transmission-state').textContent='신호 수신 중 · 기록이 이어집니다';
+   } catch(error) {
+     button.disabled=false;button.textContent='다시 신호 재생';
+     document.getElementById('transmission-state').classList.remove('hidden');
+     document.getElementById('transmission-state').textContent='음악을 재생할 수 없어요 · 다시 눌러 주세요';
+     return;
+   }
+   const lines=[...document.querySelectorAll('.story-line')];
+   lines.forEach((line,i)=>{
+     const content=line.textContent;
+     line.textContent='';
+     [...content].forEach((char,j)=>{
+       const span=document.createElement('span');span.className='story-char';span.textContent=char===' '?' ':char;span.style.transitionDelay=(j*24)+'ms';line.appendChild(span);
+     });
+     setTimeout(()=>{
+       line.classList.add('visible');
+       const chars=[...line.querySelectorAll('.story-char')];
+       chars.forEach((char,j)=>setTimeout(()=>{char.style.opacity='1';char.style.filter='blur(0)'},j*24));
+     },1800+i*5200);
+   });
+   const finishDelay=1800+lines.length*5200+1800;
+   setTimeout(()=>{
+     document.getElementById('transmission-state').classList.remove('hidden');
+     document.getElementById('travelers-link').classList.remove('hidden');
+     document.getElementById('ending-panel').classList.add('fading');
+   },finishDelay);
+ }
+ document.getElementById('begin-transmission').addEventListener('click',beginTransmission);
+ updateProgress();
+})();
+</script>
+</body>
+</html>
